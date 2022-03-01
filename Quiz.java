@@ -28,9 +28,9 @@ public class Quiz {
 		
 		for (int i = 0; i < text.size(); i++) {
 			char c = text.get(i).charAt(1);
+			ArrayList<String> qq = new ArrayList<String>();	
 			
 			if (c == 't') {
-				ArrayList<String> qq = new ArrayList<String>();
 				for (int j = i; j <= i + 4; j++) {
 					qq.add(text.get(j));
 				}
@@ -38,7 +38,6 @@ public class Quiz {
 				questions.add(qq);
 			}
 			else {
-				ArrayList<String> qq;
 				qq.add(text.get(i));
 				i++;
 				qq.add(text.get(i));
@@ -54,6 +53,11 @@ public class Quiz {
 			char type = questions.get(i).get(0).charAt(1);
 			
 			if (type == 't') {
+					Test test = new Test(questions.get(i), i + 1);
+					
+					test.setText(questions.get(i).get(0));
+					test.setAnswer(questions.get(i).get(1));
+					
 					
 			}
 			else if (type == 'f') {
@@ -61,46 +65,46 @@ public class Quiz {
 		}
 	}
 	
-}
-/*
+	public ArrayList<ArrayList<String>> shuffle() {	
+			
+			ArrayList<ArrayList<String>> temp = new ArrayList<ArrayList<String>>();
+			for (int i = 0; i < questions.size(); i += 2) {
+			
+				ArrayList<String> tmp = new ArrayList<String>();
+			
+				for (int j = 0; j < questions.get(i).size(); j += 2) {
+					tmp.add(questions.get(i).get(j));
+				}
+			
+				for (int j = 1; j < questions.get(i).size(); j += 2) {
+					tmp.add(questions.get(i).get(j));
+				}
+				
+				temp.add(tmp);
+			}
+			for (int i = 1; i < questions.size(); i += 2) {
+			
+				ArrayList<String> tmp = new ArrayList<String>();
+			
+				for (int j = 0; j < questions.get(i).size(); j += 2) {
+					tmp.add(questions.get(i).get(j));
+				}	
+			
+				for (int j = 1; j < questions.get(i).size(); j += 2) {
+					tmp.add(questions.get(i).get(j));
+				}
+				
+				temp.add(tmp);
+			}
+		
+		
+			return temp;
+	}
+
+	}
+/*  prototipe. Azirwe exception'siz
 static public static void Check_Question(String s) throws InvalidQuizFormatException {
 		char c = s.charAt(1);
 		if (!(c == 't' || c == 'f' || c == 'a')) throw new InvalidQuizFormatException;
 }
 */
-
-public ArrayList<ArrayList<String>> shuffle() {	
-		
-		ArrayList<ArrayList<String>> temp = new ArrayList<ArrayList<String>>();
-		for (int i = 0; i < questions.size(); i += 2) {
-			
-			ArrayList<String> tmp = new ArrayList<String>();
-			
-			for (int j = 0; j < questions.get(i).size(); j += 2) {
-				tmp.add(questions.get(i).get(j));
-			}
-			
-			for (int j = 1; j < questions.get(i).size(); j += 2) {
-				tmp.add(questions.get(i).get(j));
-			}
-			
-			temp.add(tmp);
-		}
-		for (int i = 1; i < questions.size(); i += 2) {
-			
-			ArrayList<String> tmp = new ArrayList<String>();
-			
-			for (int j = 0; j < questions.get(i).size(); j += 2) {
-				tmp.add(questions.get(i).get(j));
-			}	
-			
-			for (int j = 1; j < questions.get(i).size(); j += 2) {
-				tmp.add(questions.get(i).get(j));
-			}
-			
-			temp.add(tmp);
-		}
-		
-		
-		return temp;
-}
