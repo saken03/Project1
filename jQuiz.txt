@@ -1,0 +1,14 @@
+{t}What is 4 + 4?
+{c}8
+{a}2
+{a}4
+{a}7
+
+{t}What is a translation of "TENET"?
+{c}Довод
+{a}Путь
+{a}Решение
+{a}Дорога
+
+{f}Java is great in ____ programming.
+{c}OOP
